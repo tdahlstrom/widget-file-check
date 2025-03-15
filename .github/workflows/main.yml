@@ -19,9 +19,8 @@ jobs:
       - name: Get names of widget directories
         run: |
           cd tmp/salmon_demo/workflow/salmon_demo/widgets/salmon_demo
-          dirs_excluded=("icon/")
           for dir in */ ; do
-            if ! contains "${dirs_excluded[@]}" dir ; then
+            if [[ "icon/" != "$dir" ]] ; then
               echo "$dir"
             fi
           done
