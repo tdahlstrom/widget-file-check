@@ -13,8 +13,9 @@ jobs:
           wget https://github.com/Biodepot-workflows/salmon-demo/tarball/main -O salmon_demo.tgz
           tar -xzf salmon_demo.tgz
           rm salmon_demo.tgz
+          mv $(ls) salmon_demo
+          cd salmon_demo/workflow/salmon_demo/widgets/salmon_demo
           ls
-          # cd salmon_demo/workflow/salmon_demo/widgets/salmon_demo
           
       - name: Get names of widget directories
         run: |
