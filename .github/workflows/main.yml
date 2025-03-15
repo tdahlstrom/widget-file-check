@@ -18,19 +18,15 @@ jobs:
       - name: Check if important files exist for each widget
         run: |
           cd tmp/salmon_demo/workflow/salmon_demo/widgets/salmon_demo
-          ls
           for dir in */ ; do
             dir="${dir%/}"
             if [[ "icon" != "$dir" ]] ; then
-              cd "$dir"
-              ls
               if [ ! -f "$dir/Dockerfiles/Dockerfile" ] ; then
                 echo "ERROR: $dir/Dockerfiles/Dockerfile does not exist"
               fi
               if [ ! -f "$dir/$dir.attrs" ] ; then
                 echo "ERROR: $dir/$dir.attrs does not exist"
               fi
-              cd ..
             fi
           done
           
