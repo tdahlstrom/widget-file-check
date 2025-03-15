@@ -19,13 +19,14 @@ jobs:
         run: |
           cd tmp/salmon_demo/workflow/salmon_demo/widgets/salmon_demo
           for dir in */ ; do
-            if [[ "icon/" != "$dir" ]] ; then
+            dir="${dir/%}"
+            if [[ "icon" != "$dir" ]] ; then
               cd "$dir"
               if [ ! -f "$dir/Dockerfiles/Dockerfile" ] ; then
                 echo "ERROR: $dir/Dockerfiles/Dockerfile does not exist"
               fi
-              if [ ! -f "$dir/dir%/.attrs" ] ; then
-                echo "ERROR: $dir/dir%/.attrs does not exist"
+              if [ ! -f "$dir/$dir.attrs" ] ; then
+                echo "ERROR: $dir/$dir.attrs does not exist"
               fi
               cd ..
             fi
