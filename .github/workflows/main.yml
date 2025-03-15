@@ -19,7 +19,7 @@ jobs:
         run: |
           cd tmp/salmon_demo/workflow/salmon_demo/widgets/salmon_demo
           for dir in */ ; do
-            dir="${dir/%}"
+            dir="${dir%/}"
             if [[ "icon" != "$dir" ]] ; then
               cd "$dir"
               if [ ! -f "$dir/Dockerfiles/Dockerfile" ] ; then
