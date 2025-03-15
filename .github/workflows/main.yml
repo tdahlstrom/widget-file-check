@@ -1,0 +1,22 @@
+name: Check widget files
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Get workflow to test against and go to widget directory
+        run: |
+          mkdir tmp
+          cd tmp
+          wget https://github.com/Biodepot-workflows/salmon-demo/tarball/main -O salmon_demo.tgz
+          tar -xzf salmon_demo.tgz
+          rm salmon_demo.tgz
+          cd salmon-demo/workflow/salmon_demo/widgets/salmon_demo
+      - name: Get names of widget directories
+        run: |
+          for dir in */ ; do
+            echo "$dir"
+          done
+          
