@@ -14,14 +14,20 @@ jobs:
           tar -xzf salmon_demo.tgz
           rm salmon_demo.tgz
           mv $(ls) salmon_demo
-          cd salmon_demo/workflow/salmon_demo/widgets/salmon_demo
           
-      - name: Get names of widget directories
+      - name: Check if important files exist for each widget
         run: |
           cd tmp/salmon_demo/workflow/salmon_demo/widgets/salmon_demo
           for dir in */ ; do
             if [[ "icon/" != "$dir" ]] ; then
-              echo "$dir"
+              cd "$dir"
+              if [ ! -f "$dir/Dockerfiles/Dockerfile" ] ; then
+                echo "ERROR: $dir/Dockerfiles/Dockerfile does not exist"
+              fi
+              if [ ! -f "$dir/dir%/.attrs" ] ; then
+                echo "ERROR: $dir/dir%/.attrs does not exist"
+              fi
+              cd ..
             fi
           done
           
