@@ -6,7 +6,7 @@ jobs:
   build:
     runs-on: ubuntu-24.04
     steps:
-      - name: Get workflow to test against and go to widget directory
+      - name: Get workflow to test against
         run: |
           mkdir tmp
           cd tmp
@@ -15,10 +15,10 @@ jobs:
           rm salmon_demo.tgz
           mv $(ls) salmon_demo
           cd salmon_demo/workflow/salmon_demo/widgets/salmon_demo
-          ls
           
       - name: Get names of widget directories
         run: |
+          cd tmp/salmon_demo/workflow/salmon_demo/widgets/salmon_demo
           for dir in */ ; do
             echo "$dir"
           done
