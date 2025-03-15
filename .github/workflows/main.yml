@@ -20,6 +20,8 @@ jobs:
         run: |
           cd tmp/salmon_demo/workflow/salmon_demo/widgets/salmon_demo
           for dir in */ ; do
-            echo "$dir"
+            if dir != "icon/" ; do
+              echo "$dir"
+            done
           done
           
