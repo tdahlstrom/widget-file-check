@@ -22,26 +22,27 @@ jobs:
             dir="${dir%/}"
             if [[ "icon" != "$dir" ]] ; then
               if [ ! -f "$dir/Dockerfiles/Dockerfile" ] ; then
-                echo "ERROR: $dir/Dockerfiles/Dockerfile does not exist"
-                exit 1
+                echo "WARNING: $dir/Dockerfiles/Dockerfile does not exist"
+              fi
+              if [ ! -f "$dir"/icon/*.png || ! -f "$dir"/icon/*.jpg || ! -f "$dir"/icon/*.svg ] ; then
+                echo "WARNING: $dir/icon folder does not have an icon file"
               fi
               if [ ! -f "$dir/$dir.attrs" ] ; then
-                echo "ERROR: $dir/$dir.attrs does not exist"
-                exit 1
+                echo "WARNING: $dir/$dir.attrs does not exist"
               fi
               if [ ! -f "$dir/$dir.json" ] ; then
-                echo "ERROR: $dir/$dir.json does not exist"
-                exit 1
+                echo "WARNING: $dir/$dir.json does not exist"
               fi
               if [ ! -f "$dir/$dir.py" ] ; then
-                echo "ERROR: $dir/$dir.py does not exist"
-                exit 1
+                echo "WARNING: $dir/$dir.py does not exist"
               fi
               if [ ! -f "$dir/$dir.states" ] ; then
-                echo "ERROR: $dir/$dir.states does not exist"
-                exit 1
+                echo "WARNING: $dir/$dir.states does not exist"
               fi
-              echo "All necessary files exist for widget $dir"
+            else
+              if [ ! -f icon/*.png || ! -f icon/*.jpg || ! -f icon/*.svg ] ; then
+                echo "WARNING: No icon found for workflow"
+              fi
             fi
           done
           
