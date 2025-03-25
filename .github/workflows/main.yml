@@ -24,7 +24,7 @@ jobs:
               if [ ! -f "$dir/Dockerfiles/Dockerfile" ] ; then
                 echo "WARNING: $dir/Dockerfiles/Dockerfile does not exist"
               fi
-              if [ ! -f "$dir/icon"/*.png ] || [ ! -f "$dir/icon"/*.jpg ] || [ ! -f "$dir/icon"/*.svg ] ; then
+              if [ ! -f "$dir/icon"/*.png ] && [ ! -f "$dir/icon"/*.jpg ] && [ ! -f "$dir/icon"/*.svg ] ; then
                 echo "WARNING: $dir/icon folder does not have an icon file"
               fi
               if [ ! -f "$dir/$dir.attrs" ] ; then
@@ -40,7 +40,7 @@ jobs:
                 echo "WARNING: $dir/$dir.states does not exist"
               fi
             else
-              if [ ! -f icon/*.png ] || [ ! -f icon/*.jpg ] || [ ! -f icon/*.svg ] ; then
+              if [ ! -f icon/*.png ] && [ ! -f icon/*.jpg ] && [ ! -f icon/*.svg ] ; then
                 echo "WARNING: No icon found for workflow"
               fi
             fi
